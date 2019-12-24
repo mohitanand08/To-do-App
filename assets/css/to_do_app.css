@@ -1,0 +1,125 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: cornsilk;
+}
+.to-do-list {
+    margin-left: 25%;
+    width: 50%;
+    height: auto;
+    background-color: #DAF7A6;
+    border: 2px solid black;
+}
+
+.to-do-list h1{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    text-transform: uppercase;
+}
+
+.to-do-list .description label {
+    padding-left: 25px;
+    font-size: 20px;
+}
+.to-do-list .description input {
+    width: 75%;
+    border: 2px solid #aaaaaa;
+    border-radius: 2px;
+    margin: 8px 0;
+    outline: none;
+    padding: 4px;
+    padding-left: 6px;
+    box-sizing: border-box;
+    transition: 1s;
+    font-size: 14px;
+    
+}
+/* Blue effect in the input box on focus */
+.to-do-list .description input:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+/* auto hide the placeholder text on focus */
+.to-do-list .description input:focus::placeholder{
+    color: transparent;
+}
+/* Styling for category and date */
+.category-date {
+    font-size: 20px;
+    padding: 10px 0px 10px 25px;
+}
+
+#category {
+    width: 32.5%;
+    padding-right: 5%;
+    padding: 4px;
+}
+#date {
+    width: 33%;
+    padding-left: 5%;
+    padding: 4px;
+}
+
+/* Styling add-task and delete-task */
+.buttons {
+    text-align: center;
+}
+#btn-add-task, #btn-delete-task {
+    padding: 15px;
+    margin-right: 20px;
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+#btn-add-task, #btn-delete-task:hover {
+    cursor: pointer;
+}
+
+#btn-add-task {
+    background-color: #444444;
+}
+
+#btn-delete-task {
+    background-color: #EE351E;
+}
+
+/* Styling Task-card  List*/
+.task-card ul{
+    list-style: none;
+    padding-left: 0;
+    width: 90%;
+    margin-left: 5%;
+}
+.task-card ul li {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #FBB034;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.task-category {
+    font-size: 16px;
+    text-align: center;
+    width: 100px;
+    height: 40%;
+    background-color: teal;
+    margin-top: 3%;
+    margin-right: 20px;
+    color: white;
+}   
+.description-task {
+    display: flex;
+}
+.description-task .checkbox input{
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+}
+.description-date {
+    padding-left: 5px;
+    font-size: 18px;
+}

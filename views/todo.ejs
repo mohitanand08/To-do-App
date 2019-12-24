@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="shortcut icon" type="image/jpg" href="/Image/to-do list.jpg"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/to_do_app.css">
+    </head>
+    <body>
+        <div class="to-do-list">
+            <h1><i class="fa fa-check" aria-hidden="true"></i> To-do App : Organise your Life</h1>
+            <div class="description">
+                <label for="add-task">Description : </label>
+                <input type="text" placeholder="What do you want to add? " id="add-task">
+            </div>
+            <div class="category-date">
+                <label for="category">Category :</label>
+                <select id="category">
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Office">Office</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="date">Due Date :</label>
+                <input type="date" id="date">
+            </div>
+            <div class="buttons">
+                <button type="submit" id="btn-add-task">
+                    <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
+                </button>
+                <button type="submit" id="btn-delete-task">
+                    <i class="fa fa-trash" aria-hidden="true"></i> DELETE TASK
+                </button>
+            </div>
+            <div class="task-card">
+                <ul>
+                    <% for (let i of to_do_list) { %>
+                        <li > 
+                            <div class="description-task">
+                                <div class="checkbox">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="description-date">
+                                    <p><%= i.description %></p>
+                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= i.date %></p>
+                                </div>
+                            </div>
+                            <div class="task-category">
+                                <p><%= i.category %></p>
+                            </div>
+                            
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+</html>
