@@ -1,13 +1,17 @@
+:root {
+    --task-card-color: #403A3E;   
+}
 body {
     margin: 0px;
     padding: 0px;
     background-color: cornsilk;
+    font-family: 'Monda', sans-serif;
 }
 .to-do-list {
     margin-left: 25%;
     width: 50%;
     height: auto;
-    background-color: #DAF7A6;
+    background-image: linear-gradient(to bottom, #D3CCE3, #E9E4F0);
     border: 2px solid black;
 }
 
@@ -78,48 +82,68 @@ body {
 }
 
 #btn-add-task {
-    background-color: #444444;
+    background-color: #181818;
 }
 
 #btn-delete-task {
     background-color: #EE351E;
+    
 }
 
 /* Styling Task-card  List*/
 .task-card ul{
-    list-style: none;
-    padding-left: 0;
-    width: 90%;
-    margin-left: 5%;
+    margin: 0;
+    padding: 0;
 }
-.task-card ul li {
-    box-sizing: border-box;
-    width: 100%;
-    background-color: #FBB034;
-    margin-bottom: 5px;
+
+.task-card ul li{
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    list-style: none;
+    margin-bottom: 10px;
 }
-.task-category {
-    font-size: 16px;
-    text-align: center;
-    width: 100px;
-    height: 40%;
-    background-color: teal;
-    margin-top: 3%;
-    margin-right: 20px;
-    color: white;
-}   
 .description-task {
     display: flex;
+    padding-left: 25px;
+    width: 65%;
+    color: white;
+}
+.description-task .checkbox {
+    background-color: var(--task-card-color);
+    width: 30px;
+    margin-left: -5px;
+    padding-left: 10px;
 }
 .description-task .checkbox input{
     width: 20px;
     height: 20px;
     margin-top: 20px;
 }
+
 .description-date {
+    width: 100%;
+    background-color: var(--task-card-color);
     padding-left: 5px;
+}
+.description-date p {
     font-size: 18px;
+}
+.description-date .due-date-calendar {
+    color: whitesmoke;
+}
+.task-category {
+    width: 20%;
+    background-color: var(--task-card-color); ;
+    text-align: center;
+}
+.task-category p {
+    background-color: lightseagreen;
+    width: 80%;
+    padding: 13px 10px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+.delete-btn {
+    width: 8.5%;
+    background-color: var(--task-card-color);
 }

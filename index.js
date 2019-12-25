@@ -30,7 +30,7 @@ app.get('/', function(req, res){
         to_do_list: toDoList
     });
 });
-
+// Add Task to the To-do-List
 app.post('/create-to-do-list',function(req, res){
     toDoList.push({
         description: req.body.description,
@@ -39,6 +39,17 @@ app.post('/create-to-do-list',function(req, res){
     })
     return res.redirect('back');
 });
+// Delete Task from the to-do-list
+app.get('/delete-task/', function(req, res){
+    let category = req.query.category
+
+    let toDoListIndex = toDoList.findIndex(todo => todo.category == category);
+    if (toDoListIndex != -1){
+        toDoList.splice(toDoListIndex, 1);
+    }
+    return res.redirect('back')
+});
+
 app.listen(port, function(err){
     if (err) {console.log(`Error in running the server : ERROR = ${err}`);
     }

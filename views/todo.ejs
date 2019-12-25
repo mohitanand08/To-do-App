@@ -20,7 +20,7 @@
                     <select id="category" name="category" required>
                         <option value="Personal">Personal</option>
                         <option value="Work">Work</option>
-                        <option value="Office">Office</option>
+                        <option value="Office">School</option>
                         <option value="Other">Other</option>
                     </select>
                     <label for="date">Due Date :</label>
@@ -29,9 +29,6 @@
                 <div class="buttons">
                     <button type="submit" id="btn-add-task">
                         <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
-                    </button>
-                    <button type="submit" id="btn-delete-task">
-                        <i class="fa fa-trash" aria-hidden="true"></i> DELETE TASK
                     </button>
                 </div>
             </form>
@@ -45,11 +42,18 @@
                                 </div>
                                 <div class="description-date">
                                     <p><%= i.description %></p>
-                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= i.date %></p>
+                                    <p class="due-date-calendar"><i class="fa fa-calendar" aria-hidden="true"></i> <%= i.date %></p>
                                 </div>
                             </div>
                             <div class="task-category">
                                 <p><%= i.category %></p>
+                            </div>
+                            <div class="delete-btn">
+                                <a href="/delete-task/?category=<%= i.category %>">
+                                    <button type="button" id="btn-delete-task">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </a>
                             </div>
                             
                         </li>
