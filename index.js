@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const port = 8000;
+const db = require('./config/mongoose');
+const Todo = require('./models/todo');
 const app = express();
 // middleware
 app.use(express.urlencoded());
@@ -25,29 +27,42 @@ var toDoList = [
 ]
 // Controller
 app.get('/', function(req, res){
-    return res.render('todo', {
-        title: 'To-do App',
-        to_do_list: toDoList
-    });
+    Todo.find({}, function(err, todos){
+        if(err){
+            console.log('Error in fetching data from db');
+            return;
+        }
+        return res.render('todo', {
+            title: 'To-do App',
+            to_do_list: todos
+        });
+    })
 });
 // Add Task to the To-do-List
 app.post('/create-to-do-list',function(req, res){
-    toDoList.push({
+    Todo.create({
         description: req.body.description,
         category: req.body.category,
         date: req.body.date
-    })
-    return res.redirect('back');
+    }, function(err, newTodo){
+        if(err){
+            console.log('Error in creating a To-do Task');
+            return;
+        }
+        res.redirect('back')     
+    });
 });
 // Delete Task from the to-do-list
-app.get('/delete-task/', function(req, res){
-    let category = req.query.category
-
-    let toDoListIndex = toDoList.findIndex(todo => todo.category == category);
-    if (toDoListIndex != -1){
-        toDoList.splice(toDoListIndex, 1);
+app.get('/delete-task', function(req, res){
+    // get the id from the query in the ul
+    let id = req.query.id;
+    // find the todo in the database using id and delete it
+    Todo.findByIdAndDelete(id, function(err){
+        if(err){ console.log('Error in deleting an object from the database');
+        return;
     }
-    return res.redirect('back')
+    return res.redirect('back');
+    });
 });
 
 app.listen(port, function(err){
