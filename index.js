@@ -9,6 +9,7 @@ app.use(express.static('assets'));
 // Template Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded());
 // To-do list
 var toDoList = [
     {
@@ -30,6 +31,14 @@ app.get('/', function(req, res){
     });
 });
 
+app.post('/create-to-do-list',function(req, res){
+    toDoList.push({
+        description: req.body.description,
+        category: req.body.category,
+        date: req.body.date
+    })
+    return res.redirect('back');
+});
 app.listen(port, function(err){
     if (err) {console.log(`Error in running the server : ERROR = ${err}`);
     }

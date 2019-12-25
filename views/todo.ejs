@@ -10,29 +10,31 @@
     <body>
         <div class="to-do-list">
             <h1><i class="fa fa-check" aria-hidden="true"></i> To-do App : Organise your Life</h1>
-            <div class="description">
-                <label for="add-task">Description : </label>
-                <input type="text" placeholder="What do you want to add? " id="add-task">
-            </div>
-            <div class="category-date">
-                <label for="category">Category :</label>
-                <select id="category">
-                    <option value="Personal">Personal</option>
-                    <option value="Work">Work</option>
-                    <option value="Office">Office</option>
-                    <option value="Other">Other</option>
-                </select>
-                <label for="date">Due Date :</label>
-                <input type="date" id="date">
-            </div>
-            <div class="buttons">
-                <button type="submit" id="btn-add-task">
-                    <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
-                </button>
-                <button type="submit" id="btn-delete-task">
-                    <i class="fa fa-trash" aria-hidden="true"></i> DELETE TASK
-                </button>
-            </div>
+            <form action="/create-to-do-list" method="post">
+                <div class="description">
+                    <label for="add-task">Description : </label>
+                    <input type="text" placeholder="What do you want to add? " id="add-task" name="description" required>
+                </div>
+                <div class="category-date">
+                    <label for="category">Category :</label>
+                    <select id="category" name="category" required>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Office">Office</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="date">Due Date :</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="buttons">
+                    <button type="submit" id="btn-add-task">
+                        <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
+                    </button>
+                    <button type="submit" id="btn-delete-task">
+                        <i class="fa fa-trash" aria-hidden="true"></i> DELETE TASK
+                    </button>
+                </div>
+            </form>
             <div class="task-card">
                 <ul>
                     <% for (let i of to_do_list) { %>
