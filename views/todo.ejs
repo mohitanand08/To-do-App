@@ -8,8 +8,10 @@
         <link rel="stylesheet" href="/css/to_do_app.css">
     </head>
     <body>
+        <!-- To-do-List -->
         <div class="to-do-list">
             <h1><i class="fa fa-check" aria-hidden="true"></i> To-do App : Organise your Life</h1>
+            <!-- Form for adding task -->
             <form action="/create-to-do-list" method="post">
                 <div class="description">
                     <label for="add-task">Description : </label>
@@ -26,16 +28,19 @@
                     <label for="date" class="date-label">Due Date :</label>
                     <input type="date" id="date" name="date" required>
                 </div>
+                <!-- Add Task Button -->
                 <div class="buttons">
                     <button type="submit" id="btn-add-task">
                         <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
                     </button>
                 </div>
             </form>
+            <!-- Task Card -->
             <div class="task-card">
                 <ul>
                     <% for (let i of to_do_list) { %>
                         <li > 
+                            <!-- Description Task -->
                             <div class="description-task" id="description-task_<%=i._id %>">
                                 <div class="checkbox" >
                                     <input type="checkbox" id="check_<%= i._id %>" value="<%= i._id %>">
@@ -48,6 +53,7 @@
                             <div class="task-category" id="task-category_<%=i._id %>">
                                 <p id="category_<%=i._id %>" value="<%= i.category %>"><%= i.category %></p>
                             </div>
+                            <!-- Delete button -->
                             <div class="delete-btn" id="delete-btn_<%=i._id %>">
                                 <a href="/delete-task/?id=<%= i._id %>">
                                     <button type="button" id="btn-delete-task">
@@ -55,16 +61,18 @@
                                     </button>
                                 </a>
                             </div>
+                            <!-- JavaScript Script -->
                             <script>
                                 // Get the checkbox
                                 const checkBox_<%=i._id %> = document.getElementById("check_<%=i._id %>");
                                 // Control the opacity and line-through features when checkBox is selected
                                 checkBox_<%= i._id %>.addEventListener("change", function()
                                 {
+                                    // Opacity controls
                                     document.getElementById('description-task_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
                                     document.getElementById('task-category_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
                                     document.getElementById('delete-btn_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
-                                    
+                                    // Text Decoration Style
                                     if(checkBox_<%= i._id %>.checked){
                                         document.getElementById('text_<%= i._id %>').style.textDecoration = "line-through";
                                     }else{
@@ -74,6 +82,7 @@
                                 // Get the task-category
                                 const taskCategory_<%= i._id %> = document.getElementById('category_<%=i._id %>');
                                 const value_<%= i._id %> = taskCategory_<%= i._id %>.getAttribute('value');
+                                // Color change of task category
                                 if(value_<%= i._id %> == "Personal"){
                                     document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightgreen";
                                 } 
@@ -86,8 +95,7 @@
                                 else {
                                     document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightseagreen";
                                 }
-                            </script>
-                            
+                            </script>    
                         </li>
                     <% } %>
                 </ul>
