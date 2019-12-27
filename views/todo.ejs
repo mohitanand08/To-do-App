@@ -36,31 +36,41 @@
                 <ul>
                     <% for (let i of to_do_list) { %>
                         <li > 
-                            <div class="description-task">
-                                <div class="checkbox">
-                                    <input type="checkbox">
+                            <div class="description-task" id="description-task_<%=i._id %>">
+                                <div class="checkbox" >
+                                    <input type="checkbox" id="check_<%= i._id %>" value="<%= i._id %>">
                                 </div>
                                 <div class="description-date">
-                                    <p><%= i.description %></p>
+                                    <p id="text"><%= i.description %></p>
                                     <p class="due-date-calendar"><i class="fa fa-calendar" aria-hidden="true"></i> <%= i.date %></p>
                                 </div>
                             </div>
-                            <div class="task-category">
+                            <div class="task-category" id="task-category_<%=i._id %>">
                                 <p><%= i.category %></p>
                             </div>
-                            <div class="delete-btn">
+                            <div class="delete-btn" id="delete-btn_<%=i._id %>">
                                 <a href="/delete-task/?id=<%= i._id %>">
                                     <button type="button" id="btn-delete-task">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </a>
                             </div>
+                            <script>
+                                // Get the checkbox
+                                const checkBox_<%=i._id %> = document.getElementById("check_<%=i._id %>");
+                                console.log(check_<%=i._id %>);
+                                checkBox_<%= i._id %>.addEventListener("change", function()
+                                {
+                                document.getElementById('description-task_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
+                                document.getElementById('task-category_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
+                                document.getElementById('delete-btn_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
+                                });
+                            </script>
                             
                         </li>
                     <% } %>
                 </ul>
             </div>
         </div>
-        
     </body>
 </html>
