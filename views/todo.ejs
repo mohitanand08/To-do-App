@@ -40,8 +40,8 @@
                                 <div class="checkbox" >
                                     <input type="checkbox" id="check_<%= i._id %>" value="<%= i._id %>">
                                 </div>
-                                <div class="description-date">
-                                    <p id="text"><%= i.description %></p>
+                                <div class="description-date" id="text_<%= i._id %>">
+                                    <p id="text" ><%= i.description %></p>
                                     <p class="due-date-calendar"><i class="fa fa-calendar" aria-hidden="true"></i> <%= i.date %></p>
                                 </div>
                             </div>
@@ -58,17 +58,22 @@
                             <script>
                                 // Get the checkbox
                                 const checkBox_<%=i._id %> = document.getElementById("check_<%=i._id %>");
-                                // Control the opacity when checkBox is selected
+                                // Control the opacity and line-through features when checkBox is selected
                                 checkBox_<%= i._id %>.addEventListener("change", function()
                                 {
-                                document.getElementById('description-task_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
-                                document.getElementById('task-category_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
-                                document.getElementById('delete-btn_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
+                                    document.getElementById('description-task_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
+                                    document.getElementById('task-category_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
+                                    document.getElementById('delete-btn_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.4" : "1";
+                                    
+                                    if(checkBox_<%= i._id %>.checked){
+                                        document.getElementById('text_<%= i._id %>').style.textDecoration = "line-through";
+                                    }else{
+                                        document.getElementById('text_<%= i._id %>').style.textDecoration = "none";    
+                                    }
                                 });
                                 // Get the task-category
                                 const taskCategory_<%= i._id %> = document.getElementById('category_<%=i._id %>');
                                 const value_<%= i._id %> = taskCategory_<%= i._id %>.getAttribute('value');
-                                console.log(value_<%= i._id %>);
                                 if(value_<%= i._id %> == "Personal"){
                                     document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightgreen";
                                 } 
