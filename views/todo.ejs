@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="task-category" id="task-category_<%=i._id %>">
-                                <p><%= i.category %></p>
+                                <p id="category_<%=i._id %>" value="<%= i.category %>"><%= i.category %></p>
                             </div>
                             <div class="delete-btn" id="delete-btn_<%=i._id %>">
                                 <a href="/delete-task/?id=<%= i._id %>">
@@ -58,13 +58,29 @@
                             <script>
                                 // Get the checkbox
                                 const checkBox_<%=i._id %> = document.getElementById("check_<%=i._id %>");
-                                console.log(check_<%=i._id %>);
+                                // Control the opacity when checkBox is selected
                                 checkBox_<%= i._id %>.addEventListener("change", function()
                                 {
                                 document.getElementById('description-task_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
                                 document.getElementById('task-category_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
                                 document.getElementById('delete-btn_<%=i._id %>').style.opacity = checkBox_<%= i._id %>.checked ? "0.5" : "1";
                                 });
+                                // Get the task-category
+                                const taskCategory_<%= i._id %> = document.getElementById('category_<%=i._id %>');
+                                const value_<%= i._id %> = taskCategory_<%= i._id %>.getAttribute('value');
+                                console.log(value_<%= i._id %>);
+                                if(value_<%= i._id %> == "Personal"){
+                                    document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightgreen";
+                                } 
+                                else if (value_<%= i._id %> == "Office"){
+                                    document.getElementById('category_<%=i._id %>').style.backgroundColor = " lightcoral";
+                                }
+                                else if (value_<%= i._id %> == "Work"){
+                                    document.getElementById('category_<%=i._id %>').style.backgroundColor = " lightblue";
+                                }
+                                else {
+                                    document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightseagreen";
+                                }
                             </script>
                             
                         </li>
