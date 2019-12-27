@@ -20,10 +20,10 @@
                     <select id="category" name="category" required>
                         <option value="Personal">Personal</option>
                         <option value="Work">Work</option>
-                        <option value="Office">School</option>
+                        <option value="School">School</option>
                         <option value="Other">Other</option>
                     </select>
-                    <label for="date">Due Date :</label>
+                    <label for="date" class="date-label">Due Date :</label>
                     <input type="date" id="date" name="date" required>
                 </div>
                 <div class="buttons">
@@ -77,7 +77,7 @@
                                 if(value_<%= i._id %> == "Personal"){
                                     document.getElementById('category_<%=i._id %>').style.backgroundColor = "lightgreen";
                                 } 
-                                else if (value_<%= i._id %> == "Office"){
+                                else if (value_<%= i._id %> == "School"){
                                     document.getElementById('category_<%=i._id %>').style.backgroundColor = " lightcoral";
                                 }
                                 else if (value_<%= i._id %> == "Work"){

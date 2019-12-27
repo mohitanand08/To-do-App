@@ -59,7 +59,7 @@ body {
 	padding: 4px;
 }
 #date {
-	width: 33%;
+	width: 31%;
 	padding-left: 5%;
 	padding: 4px;
 }
@@ -146,4 +146,66 @@ body {
 .delete-btn {
 	width: 8.5%;
 	background-color: var(--task-card-color);
+}
+
+/* Responsive design */
+
+@media only screen and (max-width: 638px) {
+	.to-do-list {
+		width: 90%;
+		box-sizing: border-box;
+		padding: 5px;
+		margin-left: 30px;
+	}
+	.description-date {
+		overflow: hidden;
+	}
+	.delete-btn {
+		margin-left: 20px;
+		background-color: transparent;
+	}
+	.description label {
+		width: 20%;
+		font-size: 16px !important;
+	}
+	.description input {
+		width: 70% !important;
+	}
+	.category-date label {
+		font-size: 16px !important;
+	}
+	#category {
+		width: 72.5% !important;
+		margin-bottom: 10px;
+	}
+	#date {
+		width: 72.5% !important;
+	}
+}
+@media only screen and (max-width: 848px) {
+	.to-do-list {
+		width: 90%;
+		box-sizing: border-box;
+		padding: 5px;
+		margin-left: 30px;
+	}
+}
+@media only screen and (max-width: 1148px) {
+	.task-category {
+		display: none;
+	}
+	.delete-btn {
+		margin-left: 20px;
+		background-color: transparent;
+	}
+	.description input {
+		width: 65% !important;
+	}
+	#category {
+		width: 75% !important;
+		margin-bottom: 10px;
+	}
+	#date {
+		width: 75% !important;
+	}
 }
